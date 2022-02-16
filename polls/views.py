@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
-from .models import Choice, Question
+from .models import Choice, Question, Deepthought
 
 
 class IndexView(generic.ListView):
@@ -53,3 +53,20 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+class submit_thoughts(generic.CreateView):
+    template_name = 'polls/submit.html'
+    model = Deepthought
+    fields = ['thought_text']
+
+    def get_success_url(self):
+        return reverse('polls:thoughts')
+
+
+class thoughtsList(generic.ListView):
+    template_name = 'polls/thoughts.html'
+    context_object_name = 'thought_list'
+
+    def get_queryset(self):
+        return Deepthought.objects.all()

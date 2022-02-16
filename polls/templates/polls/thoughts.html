@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+{% if thought_list %}
+    <ul>
+        <h1> A list of deep thoughts: </h1> <br>
+    {% for deepthought in thought_list %}
+        {{ forloop.counter }}: {{ deepthought.thought_text }} <br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no deep thoughts.</p>
+{% endif %}
+
+   <ul> <a href="{% url 'polls:submit' %}">Submit another thought?</a> </ul>
+

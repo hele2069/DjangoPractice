@@ -17,4 +17,8 @@ urlpatterns = [
     # ex: /polls/5/vote/
     # path('<int:question_id>/vote/', views.vote, name='vote'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
+    # ex: /polls/deepthoughts
+    path('deepthoughts/', views.submit_thoughts.as_view(), name='submit'),
+    # ex: /polls/deepthoughts/list
+    path('deepthoughts/list/', views.thoughtsList.as_view(), name='thoughts')
 ]

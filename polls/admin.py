@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Question, Choice
+from .models import Question, Choice, Deepthought
 
 
 class ChoiceInLine(admin.TabularInline):  # vs. StackedInline
@@ -19,4 +19,9 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']  # search bar
 
 
+class DeepthoughtAdmin(admin.ModelAdmin):
+    model = Deepthought
+
+
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Deepthought, DeepthoughtAdmin)

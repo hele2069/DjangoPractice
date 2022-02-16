@@ -3,12 +3,14 @@ import datetime
 from django.contrib import admin
 from django.db import models
 from django.utils import timezone
+from django import forms
+
+
 # Note the addition of import datetime and from django.utils import timezone,
 # to reference Python’s standard datetime module
 # and Django’s time-zone-related utilities in django.utils.timezone, respectively.
 
 
-# Create your models here.
 class Question(models.Model):
     question_text = models.CharField(max_length=200)  # creates a field of text in database
     pub_date = models.DateTimeField('date published')  # stores datetime object
@@ -36,3 +38,10 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+
+class Deepthought(models.Model):
+    thought_text = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.thought_text
