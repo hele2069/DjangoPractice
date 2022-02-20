@@ -23,10 +23,10 @@
         </li>
     </ul>
 
-    <form action="{% url 'polls:submit' %}" method="post">
+    <form action="{% url 'polls:submit' %}" method="post", class="form">
         {% csrf_token %}
         <label for="submit" class="form-label">Please enter a deep thought: </label>
-        {{ bootstrap_form form }}
+        {{ form.as_p }}
         <input type="submit" class="form-text" id="submit">
     </form>
 
