@@ -3,7 +3,6 @@ import datetime
 from django.contrib import admin
 from django.db import models
 from django.utils import timezone
-from django import forms
 
 
 # Note the addition of import datetime and from django.utils import timezone,
