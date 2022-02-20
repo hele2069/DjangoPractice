@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-
+    {% load static %}
     {% load bootstrap5 %}
     {% bootstrap_messages %}
     {% bootstrap_css %}
@@ -26,7 +26,7 @@
     <form action="{% url 'polls:submit' %}" method="post">
         {% csrf_token %}
         <label for="submit" class="form-label">Please enter a deep thought: </label>
-        {{ form.as_p }}
+        {{ bootstrap_form form }}
         <input type="submit" class="form-text" id="submit">
     </form>
 
