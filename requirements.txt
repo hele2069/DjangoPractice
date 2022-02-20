@@ -10,3 +10,6 @@ gunicorn
 django-heroku
 
 django-bootstrap-v5
+
+dj-database-url
+psycopg2
