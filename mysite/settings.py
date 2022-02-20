@@ -133,8 +133,8 @@ if 'DATABASE_URL' in os.environ:
 
 # Activate Django-Heroku.
 try:
-    import django_heroku
-    django_heroku.settings(locals())
+        import django_heroku
+        django_heroku.settings(locals())
 except ImportError:
     found = False
 
