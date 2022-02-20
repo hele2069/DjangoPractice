@@ -1,14 +1,36 @@
-{% load static %}
+<!doctype html>
+<head>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_messages %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'polls:index' %}">Polls</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Deep Thoughts</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'polls:submit' %}">Submit a thought</a>
+                <a class="dropdown-item" href="{% url 'polls:thoughts' %}">Thought List</a>
+            </div>
+        </li>
     </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
 
+    <ol class="list-group list-group-numbered">
+        <h3>A list of polls: </h3>
+        {% if latest_question_list %}
+            {% for question in latest_question_list %}
+                <li class="list-group-item"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    </ol>
+</div>

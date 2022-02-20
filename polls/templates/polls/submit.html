@@ -1,8 +1,33 @@
+<!doctype html>
+<head>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_messages %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'polls:index' %}">Polls</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Deep Thoughts</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'polls:submit' %}">Submit a thought</a>
+                <a class="dropdown-item" href="{% url 'polls:thoughts' %}">Thought List</a>
+            </div>
+        </li>
+    </ul>
 
-<label> Enter a deep thought: </label>
-<form action="{% url 'polls:submit' %}" method="post"> {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" >
-</form>
+    <form action="{% url 'polls:submit' %}" method="post">
+        {% csrf_token %}
+        <label for="submit" class="form-label">Please enter a deep thought: </label>
+        {{ form.as_p }}
+        <input type="submit" class="form-text" id="submit">
+    </form>
+</div>
+

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # tells python to include the poll app
     'polls.apps.PollsConfig',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [

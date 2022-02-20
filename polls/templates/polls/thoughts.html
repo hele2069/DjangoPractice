@@ -1,17 +1,36 @@
-{% load static %}
+<!doctype html>
+<head>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_messages %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-
-{% if thought_list %}
-    <ul>
-        <h1> A list of deep thoughts: </h1> <br>
-    {% for deepthought in thought_list %}
-        {{ forloop.counter }}: {{ deepthought.thought_text }} <br>
-    {% endfor %}
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'polls:index' %}">Polls</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Deep Thoughts</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'polls:submit' %}">Submit a Thought</a>
+                <a class="dropdown-item" href="{% url 'polls:thoughts' %}">Thought List</a>
+            </div>
+        </li>
     </ul>
-{% else %}
-    <p>There are no deep thoughts.</p>
-{% endif %}
 
-   <ul> <a href="{% url 'polls:submit' %}">Submit another thought?</a> </ul>
-
+    <ol class="list-group list-group-numbered">
+        <h3>A list of deep thoughts: </h3>
+        {% if thought_list %}
+            {% for deepthought in thought_list %}
+                <li class="list-group-item">{{ deepthought.thought_text }}</li>
+            {% endfor %}
+        {% else %}
+            <p>There are no deep thoughts.</p>
+        {% endif %}
+    </ol>
+</div>
