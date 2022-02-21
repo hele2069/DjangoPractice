@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import sys
 from pathlib import Path
 import os
 
@@ -85,6 +85,24 @@ DATABASES = {
     }
 }
 
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'dfq6lmutd0qjs2',
+            'USER': 'dppjcywecvkjic',
+            'PASSWORD': '9849e16cd2c5df6de1f94db349166a650c73a83fe8e5c6594a32449f4ef4cf10',
+            'HOST': 'ec2-34-233-157-189.compute-1.amazonaws.com',
+            'PORT': '5432',
+        }
+    }
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
