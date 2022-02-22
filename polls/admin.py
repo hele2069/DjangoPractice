@@ -1,6 +1,13 @@
 from django.contrib import admin
-
 from .models import Question, Choice, Deepthought
+
+# REFERENCES
+# Title: Writing your first Django app, part 2
+# Author: Django Software Foundation and individual contributors
+# Date: 2022
+# Code version: 3.2
+# URL: https://docs.djangoproject.com/en/3.2/intro/tutorial02/
+# Software License: <license software is released under>
 
 
 class ChoiceInLine(admin.TabularInline):  # vs. StackedInline
@@ -19,6 +26,7 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']  # search bar
 
 
+# from Django tutorial
 class DeepthoughtAdmin(admin.ModelAdmin):
     model = Deepthought
 

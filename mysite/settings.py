@@ -103,16 +103,6 @@ else:
             'PORT': '5432',
         }
     }
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'dfq6lmutd0qjs2',
-#        'USER': 'dppjcywecvkjic',
-#        'PASSWORD': '9849e16cd2c5df6de1f94db349166a650c73a83fe8e5c6594a32449f4ef4cf10',
-#        'HOST': 'ec2-34-233-157-189.compute-1.amazonaws.com',
-#        'PORT': '5432',
-#    }
-#}
 
 
 # Password validation

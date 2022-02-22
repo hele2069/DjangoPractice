@@ -1,9 +1,17 @@
 from django.urls import path
-
 from . import views
+
+# REFERENCES
+# Title: Writing your first Django app, part 2
+# Author: Django Software Foundation and individual contributors
+# Date: 2022
+# Code version: 3.2
+# URL: https://docs.djangoproject.com/en/3.2/intro/tutorial02/
+# Software License: <license software is released under>
 
 
 app_name = 'polls'
+# url patterns for 'submit' and 'thoughts' are from Django tutorial
 urlpatterns = [
     # ex: /polls/
     # path('', views.index, name='index'),

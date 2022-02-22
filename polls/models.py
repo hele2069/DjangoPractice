@@ -1,9 +1,15 @@
 import datetime
-
 from django.contrib import admin
 from django.db import models
 from django.utils import timezone
 
+# REFERENCES
+# Title: Writing your first Django app, part 2
+# Author: Django Software Foundation and individual contributors
+# Date: 2022
+# Code version: 3.2
+# URL: https://docs.djangoproject.com/en/3.2/intro/tutorial02/
+# Software License: <license software is released under>
 
 # Note the addition of import datetime and from django.utils import timezone,
 # to reference Python’s standard datetime module
@@ -39,6 +45,7 @@ class Choice(models.Model):
         return self.choice_text
 
 
+# from Django tutorial
 class Deepthought(models.Model):
     thought_text = models.CharField(max_length=200)
 

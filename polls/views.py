@@ -5,6 +5,20 @@ from django.utils import timezone
 from django.views import generic
 from .models import Choice, Question, Deepthought
 
+# REFERENCES
+# Title: Writing your first Django app, part 2
+# Author: Django Software Foundation and individual contributors
+# Date: 2022
+# Code version: 3.2
+# URL: https://docs.djangoproject.com/en/3.2/intro/tutorial02/
+# Software License: <license software is released under>
+#
+# Title: Django - Generic editing views
+# Date: 2022
+# Code Version: 4.0
+# URL: https://docs.djangoproject.com/en/4.0/ref/class-based-views/generic-editing/
+# Software License: <>
+
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -55,6 +69,7 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
+# from Django's documentations on generic views
 class submit_thoughts(generic.CreateView):
     template_name = 'polls/submit.html'
     model = Deepthought
@@ -64,6 +79,7 @@ class submit_thoughts(generic.CreateView):
         return reverse('polls:thoughts')
 
 
+# from Django tutorial
 class thoughtsList(generic.ListView):
     template_name = 'polls/thoughts.html'
     context_object_name = 'thought_list'
